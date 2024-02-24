@@ -18,7 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..MusicGradeApp\MusicGradeApp.csproj" />
+    
+    <ProjectReference Include="..\MusicGradeApp\MusicGradeApp.csproj" />
   </ItemGroup>
 
 </Project>
