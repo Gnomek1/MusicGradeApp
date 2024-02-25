@@ -40,5 +40,15 @@ namespace MusicGradeApp
                 Console.WriteLine("enter valid string");
             }
         }
+        public  Statistics GetStatistics()
+        {
+            Statistics stat = new Statistics();
+            
+            foreach (var item in this.tracks)
+            {
+                stat.AddGrade(item.Rating);
+            }
+            return stat;
+        }
     }
 }

@@ -28,6 +28,14 @@ namespace MusicGradeApp
             Min = float.MaxValue;
         }
 
-        
+        public void AddGrade(float rating)
+        {
+            Count++;
+            Sum += rating;
+            Min = Math.Min(rating, Min);
+            Max = Math.Max(rating, Max);
+        }
+
+
     }
 }

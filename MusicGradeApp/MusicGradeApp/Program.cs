@@ -4,15 +4,39 @@
     {
         static void Main(string[] args)
         {
-            Genre genre = new Genre("Black metal");
-            genre.AddTrack("mayhem", 100);
-            genre.AddTrack("mayhe", 100);
-            genre.AddTrack("mayh", 100);
-            genre.AddTrack("may", 100);
-            genre.AddTrack("ma", 100);
-            genre.AddTrack("okoko", "50");
+            Console.WriteLine("Welcome in Music Grades App");
+            Console.WriteLine("============================");
 
-            foreach (var item in genre.tracks)
+            string musicGenre="";
+            while (musicGenre.Length==0) 
+            {
+                Console.Write("Please enter a music genre");
+                musicGenre =Console.ReadLine();
+            }
+            Genre  genre = new Genre(musicGenre);
+
+            string track = "";
+            string rating = "";
+
+            while (true)
+            {
+                Console.Write("Please enter a track name (or press 'q' to exit): ");
+                var input = Console.ReadLine();
+                if (input.ToLower() == "q")
+                {
+                    break;
+                }
+                else
+                {
+                    track = input;
+                    Console.Write($"Please enter a {track} rating (or press 'q' to exit): ");
+                    input = Console.ReadLine();
+                    rating = input;
+                    genre.AddTrack(track, rating);
+                   
+                }
+            }
+                foreach (var item in genre.tracks)
             {
                 Console.WriteLine($"{item.Title}    ,   {item.Rating}");
             }
