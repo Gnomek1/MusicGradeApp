@@ -10,7 +10,7 @@
             string musicGenre="";
             while (musicGenre.Length==0) 
             {
-                Console.Write("Please enter a music genre");
+                Console.Write("Please enter a music genre: ");
                 musicGenre =Console.ReadLine();
             }
             Genre  genre = new Genre(musicGenre);
@@ -20,7 +20,7 @@
 
             while (true)
             {
-                Console.Write("Please enter a track name (or press 'q' to exit): ");
+                Console.Write($"Please enter a track name for {musicGenre} (or press 'q' to exit): ");
                 var input = Console.ReadLine();
                 if (input.ToLower() == "q")
                 {
@@ -38,7 +38,7 @@
             }
                 foreach (var item in genre.tracks)
             {
-                Console.WriteLine($"{item.Title}    ,   {item.Rating}");
+                Console.WriteLine($"Title: {item.Title} , rating: {item.Rating}");
             }
 
         }
