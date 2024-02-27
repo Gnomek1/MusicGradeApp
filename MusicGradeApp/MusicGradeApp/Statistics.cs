@@ -24,11 +24,11 @@ namespace MusicGradeApp
         {
             Count = 0;
             Sum = 0.0f;
-            Max  = float.MinValue;
-            Min = float.MaxValue;
+            Max  = int.MinValue;
+            Min = int.MaxValue;
         }
 
-        public void AddGrade(float rating)
+        public void AddGrade(int rating)
         {
             Count++;
             Sum += rating;
