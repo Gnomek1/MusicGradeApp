@@ -43,7 +43,24 @@ namespace MusicGradeApp
         {
             foreach (var item in tracks)
             {
-                Console.WriteLine($"Title: {item.Title} , rating: {item.Rating}");
+               switch(item.Rating)
+                {
+                    case >= 80:
+                        Console.WriteLine($"{item.Title} A");
+                        break;
+                    case >= 60:
+                        Console.WriteLine($"{item.Title} B");
+                        break;
+                    case >= 40:
+                        Console.WriteLine($"{item.Title} C");
+                        break;
+                    case >= 20:
+                        Console.WriteLine($"{item.Title} D");
+                        break;
+                    default:
+                        Console.WriteLine($"{item.Title} E");
+                        break;
+                }
             }
         }
         public override Statistics GetStatistics()
