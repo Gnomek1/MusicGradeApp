@@ -63,7 +63,7 @@
                             Console.Write("Please enter a music genre: ");
                             musicGenre = Console.ReadLine();
                         }
-                        GenreInMemory genre = new GenreInMemory(musicGenre);
+                        GenreInFile genre = new GenreInFile(musicGenre);
 
                         string track = "";
                         string rating = "";
@@ -100,12 +100,9 @@
                 }
                 else
                 {
-                    Console.WriteLine("Please enter a valid option");
-                    continue;
+                    Console.WriteLine("Please enter a valid option next time");
+                    break;
                 }
-
-
-
             }
         }
     }
