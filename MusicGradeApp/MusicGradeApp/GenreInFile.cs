@@ -32,7 +32,7 @@ namespace MusicGradeApp
             }
             else
             {
-                Console.WriteLine("Please enter rate between 0 and 100");
+                Console.WriteLine("Please enter rate between 0 and 100");  //add exceptions
             }
         }
 
@@ -44,7 +44,7 @@ namespace MusicGradeApp
             }
             else
             {
-                Console.WriteLine("enter valid string");
+                Console.WriteLine("enter valid string"); //add exceptions
             }
         }
 
