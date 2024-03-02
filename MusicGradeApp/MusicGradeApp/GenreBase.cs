@@ -19,9 +19,8 @@ namespace MusicGradeApp
 
         public abstract void AddTrack(string title, int rating);
         public abstract void AddTrack(string title, string rating);
+        public abstract void AddTrack(string title, double rating);
         public abstract void ShowTracks();
         public abstract Statistics GetStatistics();
-        //add delegate
-
     }
 }

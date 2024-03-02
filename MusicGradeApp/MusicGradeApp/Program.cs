@@ -1,39 +1,39 @@
-﻿namespace MusicGradeApp
+﻿using static System.Net.Mime.MediaTypeNames;
+using System.Drawing;
+
+namespace MusicGradeApp
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Welcome in Music Grades App");
+            CWColor(ConsoleColor.DarkGreen, "Welcome in Music Grades App");
             Console.WriteLine("============================");
-            Console.ResetColor();
             bool CloseApp = true;
             string musicGenre = "";
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("1-Add track name and rating to program memory and show stats");
-            Console.WriteLine("2-Add track name and rating to \"grenre_name\"rating.txt and show stats");
-            Console.WriteLine("X-Close App");
+            CWColor(ConsoleColor.DarkYellow,"1-Add track name and rating to program memory and show stats");
+            CWColor(ConsoleColor.DarkYellow, "2-Add track name and rating to \"grenre_name\"rating.txt and show stats");
+            CWColor(ConsoleColor.DarkYellow, "\"X-Close App\"");
             var userInput = Console.ReadLine().ToUpper();
-            Console.ResetColor();
             while (CloseApp)
             {
                 if (userInput == "1")
                 {
                     while (musicGenre.Length == 0)
                     {
-                        Console.Write("Please enter a music genre: ");
+                        WColor(ConsoleColor.DarkBlue,"Please enter a music genre: ");
                         musicGenre = Console.ReadLine();
                     }
-                    GenreInMemory genre = new GenreInMemory(musicGenre);
 
+                    GenreInMemory genre = new GenreInMemory(musicGenre);
+                    genre.TrackAdded += GenreTrackAdded;
                     string track = "";
                     string rating = "";
 
                     while (true)
                     {
-                        Console.Write($"Please enter a track name for {musicGenre} (or press 'q' to exit): ");
+                        WColor(ConsoleColor.DarkBlue, $"Please enter a track name for {musicGenre} (or press 'q' to exit): ");
                         var input = Console.ReadLine();
                         if (input.ToLower() == "q")
                         {
@@ -42,17 +42,24 @@
                         else
                         {
                             track = input;
-                            Console.Write($"Please enter a {track} rating (or press 'q' to exit): ");
+                            WColor(ConsoleColor.DarkBlue, $"Please enter a {track} rating (or press 'q' to exit): ");
                             input = Console.ReadLine();
                             rating = input;
-                            genre.AddTrack(track, rating);
-
+                            try
+                            {
+                                genre.AddTrack(track, rating);
+                            }
+                            catch (Exception e)
+                            {
+                                CWColor(ConsoleColor.Red, $"Exception catched: {e.Message}");
+                            }
                         }
                     }
+                   
                     Statistics statistics = genre.GetStatistics();
-                    Console.WriteLine($"max:{statistics.Max}");
+                    Console.WriteLine($"\nmax:{statistics.Max}");
                     Console.WriteLine($"min:{statistics.Min}");
-                    Console.WriteLine($"avg:{statistics.Average}");
+                    Console.WriteLine($"avg:{statistics.Average} \nList of all tracks:");
                     genre.ShowTracks();
                     CloseApp=false;
                 }
@@ -64,13 +71,13 @@
                             musicGenre = Console.ReadLine();
                         }
                         GenreInFile genre = new GenreInFile(musicGenre);
-
+                    genre.TrackAdded += GenreTrackAdded;
                         string track = "";
                         string rating = "";
 
                         while (true)
                         {
-                            Console.Write($"Please enter a track name for {musicGenre} (or press 'q' to exit): ");
+                            WColor(ConsoleColor.DarkBlue, $"Please enter a track name for {musicGenre} (or press 'q' to exit): ");
                             var input = Console.ReadLine();
                             if (input.ToLower() == "q")
                             {
@@ -79,17 +86,24 @@
                             else
                             {
                                 track = input;
-                                Console.Write($"Please enter a {track} rating (or press 'q' to exit): ");
+                                WColor(ConsoleColor.DarkBlue, $"Please enter a {track} rating (or press 'q' to exit): ");
                                 input = Console.ReadLine();
                                 rating = input;
-                                genre.AddTrack(track, rating);
-
+                            try
+                                {
+                                    genre.AddTrack(track, rating);
+                                }
+                            catch (Exception e)
+                                {
+                                    WColor(ConsoleColor.Red, $"Exception catched: {e.Message}");
+                                }
                             }
                         }
                         Statistics statistics = genre.GetStatistics();
-                        Console.WriteLine($"max:{statistics.Max}");
+                        Console.WriteLine($"\nmax:{statistics.Max}");
                         Console.WriteLine($"min:{statistics.Min}");
-                        Console.WriteLine($"avg:{statistics.Average}");
+                        Console.WriteLine($"avg:{statistics.Average} \nList of all tracks:");
+
                         genre.ShowTracks();
                     CloseApp = false;
                 }
@@ -104,6 +118,25 @@
                     break;
                 }
             }
+        }
+
+
+        private static void GenreTrackAdded(object sender, EventArgs args)
+        {
+            CWColor(ConsoleColor.Cyan,"Track added");
+        }
+
+        private static void CWColor(ConsoleColor color, string text)
+        {
+            Console.ForegroundColor = color;
+            Console.WriteLine(text);
+            Console.ResetColor();
+        }
+        private static void WColor(ConsoleColor color, string text)
+        {
+            Console.ForegroundColor = color;
+            Console.Write(text);
+            Console.ResetColor();
         }
     }
 }

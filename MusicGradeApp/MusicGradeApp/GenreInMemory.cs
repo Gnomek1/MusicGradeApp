@@ -10,7 +10,8 @@ namespace MusicGradeApp
     public class GenreInMemory:GenreBase
     {
         private List<Track> tracks;
-
+        public delegate void AddTrackDelegate(object sender,EventArgs args);
+        public event AddTrackDelegate TrackAdded;
         public GenreInMemory (string musicGenre):base(musicGenre)
         {
             tracks = new List<Track>();
@@ -22,10 +23,14 @@ namespace MusicGradeApp
             {
                 Track track = new Track(title, rating);
                 tracks.Add(track);
+                if (TrackAdded!= null)
+                {
+                    TrackAdded(this, new EventArgs());
+                }
             }
             else
             {
-                Console.WriteLine("Please enter rate between 0 and 100"); //add exceptions
+                throw new Exception("Please enter rate between 0 and 100");
             }
         }
         public override void AddTrack(string title, string rating)
@@ -36,8 +41,14 @@ namespace MusicGradeApp
             }
             else
             {
-                Console.WriteLine("enter valid string"); //add exceptions
+                throw new Exception("enter valid string");
             }
+        }
+
+        public override void AddTrack(string title, double rating)
+        {
+            int ratingAsDouble = (int)rating;
+            AddTrack(title,ratingAsDouble);
         }
         public override void ShowTracks()
         {

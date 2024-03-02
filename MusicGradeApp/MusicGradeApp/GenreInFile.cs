@@ -11,6 +11,8 @@ namespace MusicGradeApp
 {
     public class GenreInFile : GenreBase
     {
+        public delegate void AddTrackDelegate(object sender, EventArgs args);
+        public event AddTrackDelegate TrackAdded;
         private readonly string fileName;
         private List<Track> tracks;
 
@@ -29,10 +31,14 @@ namespace MusicGradeApp
                 {
                     writer.WriteLine($"{title}    {rating}");
                 }
+                if (TrackAdded != null)
+                {
+                    TrackAdded(this, new EventArgs());
+                }
             }
             else
             {
-                Console.WriteLine("Please enter rate between 0 and 100");  //add exceptions
+                throw new Exception("Please enter rate between 0 and 100");  
             }
         }
 
@@ -44,8 +50,13 @@ namespace MusicGradeApp
             }
             else
             {
-                Console.WriteLine("enter valid string"); //add exceptions
+                throw new Exception("enter valid string"); 
             }
+        }
+        public override void AddTrack(string title, double rating)
+        {
+            int ratingAsDouble = (int)rating;
+            AddTrack(title, ratingAsDouble);
         }
 
         public override Statistics GetStatistics()
@@ -68,7 +79,7 @@ namespace MusicGradeApp
                             }
                             else
                             {
-                                Console.WriteLine($"Nie udało się sparsować oceny z linii: {line}");
+                                throw new Exception($"I cannot parse a grade from this line: {line}");
                             }
                         }
                         line = reader.ReadLine();
@@ -92,7 +103,7 @@ namespace MusicGradeApp
                             }
                             else
                             {
-                                Console.WriteLine($"Nie udało się sparsować oceny z linii: {line}");
+                                throw new Exception($"I cannot parse a grade from this line: {line}");
                             }
                         }
                         line = reader.ReadLine();
