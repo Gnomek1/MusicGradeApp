@@ -16,6 +16,7 @@ namespace MusicGradeApp
             CWColor(ConsoleColor.DarkYellow, "2-Add track name and rating to \"grenre_name\"rating.txt and show stats");
             CWColor(ConsoleColor.DarkYellow, "\"X-Close App\"");
             var userInput = Console.ReadLine().ToUpper();
+
             while (CloseApp)
             {
                 if (userInput == "1")
@@ -120,7 +121,6 @@ namespace MusicGradeApp
             }
         }
 
-
         private static void GenreTrackAdded(object sender, EventArgs args)
         {
             CWColor(ConsoleColor.Cyan,"Track added");
@@ -132,6 +132,7 @@ namespace MusicGradeApp
             Console.WriteLine(text);
             Console.ResetColor();
         }
+
         private static void WColor(ConsoleColor color, string text)
         {
             Console.ForegroundColor = color;

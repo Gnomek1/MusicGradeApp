@@ -53,6 +53,7 @@ namespace MusicGradeApp
                 throw new Exception("enter valid string"); 
             }
         }
+
         public override void AddTrack(string title, double rating)
         {
             int ratingAsDouble = (int)rating;
@@ -112,6 +113,7 @@ namespace MusicGradeApp
             }
             return stats;
         }
+
         public override void ShowTracks()
         {
             if (File.Exists(fileName))

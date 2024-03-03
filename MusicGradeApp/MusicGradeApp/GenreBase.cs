@@ -8,8 +8,6 @@ namespace MusicGradeApp
 {
     public abstract class GenreBase : IGenre
     {
-       // private List<Track> tracks;
-       // jak dodac prywatna liste do kontruktora w klasie dziedziczace (GenreInMemory)
         public string MusicGenre { get; private set; }
 
         public GenreBase(string musicGenre)

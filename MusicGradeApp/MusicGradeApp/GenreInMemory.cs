@@ -50,6 +50,7 @@ namespace MusicGradeApp
             int ratingAsDouble = (int)rating;
             AddTrack(title,ratingAsDouble);
         }
+
         public override void ShowTracks()
         {
             foreach (var item in tracks)
