@@ -23,7 +23,7 @@ namespace MusicGradeApp
                 {
                     while (musicGenre.Length == 0)
                     {
-                        WColor(ConsoleColor.DarkBlue,"Please enter a music genre: ");
+                        WColor(ConsoleColor.Green,"Please enter a music genre: ");
                         musicGenre = Console.ReadLine();
                     }
 
@@ -34,7 +34,7 @@ namespace MusicGradeApp
 
                     while (true)
                     {
-                        WColor(ConsoleColor.DarkBlue, $"Please enter a track name for {musicGenre} (or press 'q' to exit): ");
+                        WColor(ConsoleColor.Green, $"Please enter a track name for {musicGenre} (or press 'q' to exit): ");
                         var input = Console.ReadLine();
                         if (input.ToLower() == "q")
                         {
@@ -43,7 +43,7 @@ namespace MusicGradeApp
                         else
                         {
                             track = input;
-                            WColor(ConsoleColor.DarkBlue, $"Please enter a {track} rating (or press 'q' to exit): ");
+                            WColor(ConsoleColor.Green, $"Please enter a {track} rating (or press 'q' to exit): ");
                             input = Console.ReadLine();
                             rating = input;
                             try
@@ -78,7 +78,7 @@ namespace MusicGradeApp
 
                         while (true)
                         {
-                            WColor(ConsoleColor.DarkBlue, $"Please enter a track name for {musicGenre} (or press 'q' to exit): ");
+                            WColor(ConsoleColor.Green, $"Please enter a track name for {musicGenre} (or press 'q' to exit): ");
                             var input = Console.ReadLine();
                             if (input.ToLower() == "q")
                             {
@@ -87,7 +87,7 @@ namespace MusicGradeApp
                             else
                             {
                                 track = input;
-                                WColor(ConsoleColor.DarkBlue, $"Please enter a {track} rating (or press 'q' to exit): ");
+                                WColor(ConsoleColor.Green, $"Please enter a {track} rating (or press 'q' to exit): ");
                                 input = Console.ReadLine();
                                 rating = input;
                             try
