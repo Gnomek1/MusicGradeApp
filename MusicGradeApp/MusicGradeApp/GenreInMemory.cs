@@ -22,25 +22,8 @@
             }
             else
             {
-                throw new Exception("Please enter rate between 0 and 100");
+                throw new Exception("Please enter integer  between 0 and 100");
             }
-        }
-        public override void AddTrack(string title, string rating)
-        {
-            if (int.TryParse(rating, out int result))
-            {
-                AddTrack(title, result);
-            }
-            else
-            {
-                throw new Exception("enter valid string");
-            }
-        }
-
-        public override void AddTrack(string title, double rating)
-        {
-            int ratingAsDouble = (int)rating;
-            AddTrack(title, ratingAsDouble);
         }
 
         public override void ShowTracks()

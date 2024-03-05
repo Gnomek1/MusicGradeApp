@@ -20,7 +20,7 @@
                 {
                     while (musicGenre.Length == 0)
                     {
-                        WColor(ConsoleColor.Green, "Please enter a music genre: ");
+                        CWColor(ConsoleColor.Green, "Please enter a music genre: ");
                         musicGenre = Console.ReadLine();
                     }
 
@@ -31,7 +31,7 @@
 
                     while (true)
                     {
-                        WColor(ConsoleColor.Green, $"Please enter a track name for {musicGenre} (or press 'q' to exit): ");
+                        CWColor(ConsoleColor.Green, $"Please enter a track name  (or press 'q' to exit): ");
                         var input = Console.ReadLine();
                         if (input.ToLower() == "q")
                         {
@@ -55,10 +55,7 @@
                     }
 
                     Statistics statistics = genre.GetStatistics();
-                    Console.WriteLine($"\nmax:{statistics.Max}");
-                    Console.WriteLine($"min:{statistics.Min}");
-                    Console.WriteLine($"avg:{statistics.Average} \nList of all tracks:");
-                    genre.ShowTracks();
+                    ShowStats(statistics);
                     CloseApp = false;
                 }
                 else if (userInput == "2")
@@ -98,21 +95,18 @@
                         }
                     }
                     Statistics statistics = genre.GetStatistics();
-                    Console.WriteLine($"\nmax:{statistics.Max}");
-                    Console.WriteLine($"min:{statistics.Min}");
-                    Console.WriteLine($"avg:{statistics.Average} \nList of all tracks:");
-
+                    ShowStats(statistics);
                     genre.ShowTracks();
                     CloseApp = false;
                 }
                 else if (userInput == "X")
                 {
-                    Console.WriteLine("Good Bye");
+                    CWColor(ConsoleColor.Magenta, "Good Bye");
                     CloseApp = false;
                 }
                 else
                 {
-                    Console.WriteLine("Please enter a valid option next time");
+                    CWColor(ConsoleColor.Magenta, "Please enter a valid option next time");
                     break;
                 }
             }
@@ -136,6 +130,14 @@
             Console.Write(text);
             Console.ResetColor();
         }
+
+        private static void ShowStats(Statistics stats)
+        {
+            Console.WriteLine($"\nmax:{stats.Max}");
+            Console.WriteLine($"min:{stats.Min}");
+            Console.WriteLine($"avg:{stats.Average} \nList of all tracks:");
+        }
+        //private static void EnterRating()
     }
 }
 
