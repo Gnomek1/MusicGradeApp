@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MusicGradeApp
+﻿namespace MusicGradeApp
 {
     public abstract class GenreBase : IGenre
     {
         public string MusicGenre { get; private set; }
-
+        public abstract event AddTrackDelegate TrackAdded;
+        public delegate void AddTrackDelegate(object sender, EventArgs args);
         public GenreBase(string musicGenre)
         {
             MusicGenre = musicGenre;

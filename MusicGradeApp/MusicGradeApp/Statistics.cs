@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MusicGradeApp
+﻿namespace MusicGradeApp
 {
     public class Statistics
     {
@@ -24,7 +18,7 @@ namespace MusicGradeApp
         {
             Count = 0;
             Sum = 0.0f;
-            Max  = int.MinValue;
+            Max = int.MinValue;
             Min = int.MaxValue;
         }
 

@@ -21,26 +21,7 @@ namespace MusicGradeApp.Tests
             Assert.AreEqual(40, result.Min);
             Assert.AreEqual(76.0f, result.Average);
         }
-        //[Test]
-        //public void WhenCollectRatingsInFile_ThenCorrectResult()
-        //{
-        //    // arrange
-        //    var genre = new GenreInFile("Black Metal");
-        //    genre.AddTrack("Mayhem-Frezing Moon", 40);
-        //    genre.AddTrack("Mayhem-DeathCrush", 50);
-        //    genre.AddTrack("Odraza-Najkrótsza z wiecznoœci", 60);
-        //    genre.AddTrack("Odraza-Ja nie st¹d", 70);
-        //    genre.AddTrack("Odraza-W godzinie Wilka", 80);
-
-
-        //    // act
-        //    var result = genre.GetStatistics();
-        //    // assert
-        //    Assert.AreEqual(100, result.Max);
-        //    Assert.AreEqual(40, result.Min);
-        //    Assert.AreEqual(60, result.Average);
-        //}
-
+        
         [Test]
         public void WhenCreateGenreInFile_ThenCreateCorrectTXTFile()
         {

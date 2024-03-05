@@ -1,25 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO.Enumeration;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-namespace MusicGradeApp
+﻿namespace MusicGradeApp
 {
     public class GenreInFile : GenreBase
     {
-        public delegate void AddTrackDelegate(object sender, EventArgs args);
-        public event AddTrackDelegate TrackAdded;
+       
+        public override event AddTrackDelegate TrackAdded;
         private readonly string fileName;
-        private List<Track> tracks;
 
         public GenreInFile(string musicGenre) : base(musicGenre)
         {
-            tracks = new List<Track>();
-            fileName = musicGenre + "rating.txt";
+            fileName = musicGenre + "_rating.txt";
         }
 
         public override void AddTrack(string title, int rating)
@@ -29,7 +18,7 @@ namespace MusicGradeApp
                 Track track = new Track(title, rating);
                 using (var writer = File.AppendText(fileName))
                 {
-                    writer.WriteLine($"{title}    {rating}");
+                    writer.WriteLine($"{title}   {rating}");
                 }
                 if (TrackAdded != null)
                 {
@@ -38,7 +27,7 @@ namespace MusicGradeApp
             }
             else
             {
-                throw new Exception("Please enter rate between 0 and 100");  
+                throw new Exception("Please enter rate between 0 and 100");
             }
         }
 
@@ -50,7 +39,7 @@ namespace MusicGradeApp
             }
             else
             {
-                throw new Exception("enter valid string"); 
+                throw new Exception("enter integer between 0 and 100");
             }
         }
 
