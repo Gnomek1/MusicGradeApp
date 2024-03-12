@@ -137,11 +137,7 @@
             Console.WriteLine($"min:{stats.Min}");
             Console.WriteLine($"avg:{stats.Average} \nList of all tracks:");
         }
-        //private static void EnterRating()
     }
 }
 
 
-
-
-// powtarzalne elementy dodac do 1 metody

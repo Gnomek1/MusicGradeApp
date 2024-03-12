@@ -2,7 +2,6 @@
 {
     public class GenreInFile : GenreBase
     {
-
         public override event AddTrackDelegate TrackAdded;
         private readonly string fileName;
 
